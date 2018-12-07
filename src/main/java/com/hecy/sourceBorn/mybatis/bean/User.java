@@ -1,19 +1,21 @@
-package com.hecy.mybatis.bean;
+package com.hecy.sourceBorn.mybatis.bean;
+
 
 /**
  * @Author: hecy
- * @Date: 2018/11/21 14:08
+ * @Date: 2018/12/5 11:13
  * @Version 1.0
  */
-
 public class User {
+
+
     private Integer id;
 
     private String userName;
 
     private String password;
 
-    private Integer age;
+     private Integer age;
 
     public Integer getId() {
         return id;

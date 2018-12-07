@@ -1,18 +1,15 @@
-#默认使用配置
+
 #spring:
 #  profiles:
 #    active: dev
-
-#公共配置与profiles选择无关
-mybatis:
-  typeAliasesPackage: com.hecy.mybatis.bean
+ mybatis:
+  typeAliasesPackage: com.hecy.springBoot.mybatis.bean
   mapperLocations: classpath:mapper/*.xml
 
 
 
 
-#开发配置
-spring:
+ spring:
 #  profiles: dev
 
   datasource:
@@ -20,5 +17,4 @@ spring:
     username: root
     password:
     driver-class-name: com.mysql.jdbc.Driver
-    # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
