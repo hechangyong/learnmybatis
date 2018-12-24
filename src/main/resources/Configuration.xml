@@ -2,13 +2,26 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <properties resource="mybatis-conf.properties">
+        <property name="org.apache.ibatis.parsing.PropertyParser.enable-default-value" value="true"/> <!--如下 username 中使用 ${xxx: root} 开启可以使用默认值 -->
+        <!--<property name="org.apache.ibatis.parsing.PropertyParser.default-value-separator" value="?:"/> &lt;!&ndash; Change default value of separator &ndash;&gt;-->
+        <property name="driver" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/mytest?serverTimezone=GMT%2B8"></property>
+    </properties>
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+    <typeAliases>
+        <typeAlias alias="User" type="com.hecy.sourceBorn.mybatis.bean.User"></typeAlias>
+        <typeAlias alias="UserMapper" type="com.hecy.sourceBorn.mybatis.mapper.UserMapper"></typeAlias>
+    </typeAliases>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://127.0.0.1:3306/mytest?serverTimezone=GMT%2B8"/>
-                <property name="username" value="root"/>
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${ss:root}"/>
                 <property name="password" value=""/>
             </dataSource>
         </environment>
