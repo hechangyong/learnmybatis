@@ -2,6 +2,8 @@ package com.hecy.sourceBorn.mybatis.mapper;
 
 import com.hecy.sourceBorn.mybatis.bean.User;
 
+import java.util.List;
+
 /**
  * @Author: hecy
  * @Date: 2018/12/5 11:25
@@ -9,4 +11,13 @@ import com.hecy.sourceBorn.mybatis.bean.User;
  */
 public interface UserMapper {
     public User getUser(int id);
+
+    //查询所有Employee
+    List<User> selectAllUser();
+    
+    //根据id删除Employee
+    void deleteUserById(Integer id);
+
+
+    void insert(User user);
 }

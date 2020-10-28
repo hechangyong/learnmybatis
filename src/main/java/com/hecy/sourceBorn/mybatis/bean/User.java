@@ -1,6 +1,8 @@
 package com.hecy.sourceBorn.mybatis.bean;
 
 
+import javax.persistence.criteria.CriteriaBuilder;
+
 /**
  * @Author: hecy
  * @Date: 2018/12/5 11:13
@@ -11,11 +13,21 @@ public class User {
 
     private Integer id;
 
-    private String userName;
+    private String user_name;
 
     private String password;
 
-     private Integer age;
+    private Integer age;
+
+    public User() {
+    }
+
+    public User(Integer id, Integer age, String user_name,String password) {
+        this.id = id;
+        this.age = age;
+        this.user_name = user_name;
+        this.password= password;
+    }
 
     public Integer getId() {
         return id;
@@ -25,12 +37,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
     public String getPassword() {
@@ -47,5 +59,15 @@ public class User {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + user_name + '\'' +
+                ", password='" + password + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

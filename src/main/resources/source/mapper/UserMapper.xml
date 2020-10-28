@@ -1,8 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--命名空间和接口保持一致-->
 <mapper namespace="com.hecy.sourceBorn.mybatis.mapper.UserMapper">
-    <select id="getUser" parameterType="int" resultType="com.hecy.sourceBorn.mybatis.bean.User">
-        select id,userName,password from user  where id = #{id}
+
+
+    <!--<resultMap id="BaseResultMap" type="com.hecy.sourceBorn.mybatis.bean.User" >-->
+        <!--<id column="id" property="id" jdbcType="INTEGER" />-->
+        <!--<result column="user_name" property="userName" javaType="string" jdbcType="VARCHAR" />-->
+        <!--<result column="password" property="password" typeHandler="com.hecy.sourceBorn.mybatis.bean.MyAnTypeHandleTestCase" />-->
+     <!--</resultMap>-->
+    <!--
+    eviction LRU
+    flushInterval缓存时间，以毫秒为单位
+    size缓存大小
+    readOnly如果为false的话，缓存对象必须是可序列化的-->
+    <cache eviction="LRU"
+           type="org.apache.ibatis.cache.impl.PerpetualCache"
+           flushInterval="120000"
+           size="1024"
+           readOnly="true"/>
+
+    <select id="getUser" parameterType="int" resultType="User" useCache="true">
+        select id,user_name,password ,age from user  where id = #{id}
     </select>
+    <!-- 查询所有Employee -->
+    <select id="getAllUser" parameterType="int" resultType="User">
+                        SELECT id,userName,password from user
+                        </select>
+    <!-- 根据id删除Employee -->
+    <delete id="deleteUserById" parameterType="int">
+      DELETE FROM user WHERE id = #{id}
+	</delete>
+
+    <insert id="insert" parameterType="User">
+        insert into user (id,user_name,password,age) values ( #{id}, #{user_name}, #{password}, #{age})
+    </insert>
+
 </mapper>

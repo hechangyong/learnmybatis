@@ -1,9 +1,9 @@
 /*
  * This Class demonstrates use of annotations using reflection.
- * 
+ *
  * @author Yashwant Golecha (ygolecha@gmail.com)
  * @version 1.0
- * 
+ *
  */
 
 package com.hecy.springBoot.mybatis.bean;
@@ -25,19 +25,19 @@ public class TodoReport {
      * After that it displays the information from annotation accordingly.
      */
     private static void getTodoReportForBusinessLogic() {
-        
+
         Class businessLogicClass = BusinessLogic.class;
-        for(Method method : businessLogicClass.getMethods()) {
-            Todo todoAnnotation = (Todo)method.getAnnotation(Todo.class);
-            Annotation[] as  =method.getDeclaredAnnotations();
-             if (as.length >= 1) {
-                for(int i =0; i< as.length; i++){
+        for (Method method : businessLogicClass.getMethods()) {
+            Todo todoAnnotation = (Todo) method.getAnnotation(Todo.class);
+            Annotation[] as = method.getDeclaredAnnotations();
+            if (as.length >= 1) {
+                for (int i = 0; i < as.length; i++) {
                     System.out.println(" as[] " + as[i].annotationType());
 
                 }
             }
 
-            if(todoAnnotation != null) {
+            if (todoAnnotation != null) {
                 System.out.println(" Method Name : " + method.getName());
                 System.out.println(" Author : " + todoAnnotation.author());
                 System.out.println(" Priority : " + todoAnnotation.priority());
